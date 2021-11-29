@@ -4,12 +4,19 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
+import { Provider as ReduxProvider } from "react-redux";
+import { store } from "modules/store";
+import { Sabana } from "sabana-music";
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <ReduxProvider store={store}>
+      <Sabana useCustomStore={true}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Sabana>
+    </ReduxProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
